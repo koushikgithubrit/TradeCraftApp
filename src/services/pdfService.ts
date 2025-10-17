@@ -1,9 +1,8 @@
 // @ts-ignore
 import type {} from 'pdfjs-dist/build/pdf';
 
-import { PDFDocument } from 'pdf-lib';
+//import { PDFDocument } from 'pdf-lib';
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist';
-import type { TextItem, TextMarkedContent } from 'pdfjs-dist/types/src/display/api';
 
 // Initialize PDF.js worker with local file
 const workerPath = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url).href;
@@ -48,7 +47,6 @@ export const pdfService = {
       for (let i = 1; i <= numPages; i++) {
         const page = await pdf.getPage(i);
         const textContent = await page.getTextContent();
-        const operatorList = await page.getOperatorList();
         const blocks: PDFContentBlock[] = [];
 
         // Extract text blocks

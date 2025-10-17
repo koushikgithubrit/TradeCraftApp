@@ -3,64 +3,14 @@
 import { Suspense } from "react"
 import { Link } from "react-router-dom"
 import { Canvas } from "@react-three/fiber"
-import * as THREE from "three"
-import { OrbitControls, Text3D, Float, Stars } from "@react-three/drei"
+import { OrbitControls, Stars } from "@react-three/drei"
 import { motion } from "framer-motion"
 import { FaChartLine, FaGraduationCap, FaUsers, FaLightbulb, FaChartBar, FaRobot } from "react-icons/fa"
 import CandlestickChart3D from "../components/CandlestickChart3D"
 import MarketTicker from "../components/MarketTicker"
 import Grid3D from "../components/Grid3D"
 
-interface FloatingTextProps {
-  text: string;
-  position: [number, number, number];
-}
 
-// 3D Chart Component
-function AnimatedChart() {
-  const points = Array(20).fill(0).map((_, i) => {
-    const x = (i - 10) * 0.3;
-    const y = Math.sin(i * 0.2) * Math.random();
-    const z = 0;
-    return new THREE.Vector3(x, y, z);
-  });
-
-  const curve = new THREE.CatmullRomCurve3(points);
-  const curvePoints = curve.getPoints(100);
-  
-  return (
-    <group>
-      <mesh>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={curvePoints.length}
-            array={new Float32Array(curvePoints.flatMap(p => [p.x, p.y, p.z]))}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial attach="material" color="#22c55e" linewidth={2} />
-      </mesh>
-    </group>
-  );
-}
-
-// Floating Text Component
-function FloatingText({ text, position }: FloatingTextProps) {
-  return (
-    <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
-      <Text3D
-        font="/fonts/Inter_Bold.json"
-        size={0.5}
-        height={0.1}
-        position={position}
-      >
-        {text}
-        <meshStandardMaterial color="#22c55e" />
-      </Text3D>
-    </Float>
-  );
-}
 
 // Scene Component
 function Scene() {

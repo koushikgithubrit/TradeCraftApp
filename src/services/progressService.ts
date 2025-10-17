@@ -1,5 +1,5 @@
 import { modules } from '../data/modules';
-import type { Module, Lesson } from '../data/modules';
+//import type { Module, Lesson } from '../data/modules';
 
 interface Progress {
   completedLessons: string[];
@@ -22,7 +22,7 @@ export const progressService = {
   },
 
   markLessonAsCompleted(lessonId: string) {
-    const progress = this.getProgress();
+    var progress = this.getProgress();
     if (!progress.completedLessons.includes(lessonId)) {
       progress.completedLessons.push(lessonId);
       this.saveProgress(progress);

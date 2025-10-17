@@ -10,7 +10,7 @@ interface ModuleContent {
 const ModuleViewer: React.FC = () => {
   const { moduleId } = useParams<{ moduleId: string }>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [moduleContent, setModuleContent] = useState<ModuleContent | null>(null);
+  const [moduleContent] = useState<ModuleContent | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

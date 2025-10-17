@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import koushik from "..components/photos/koushik.jpg"
 
 export default function About() {
   return (

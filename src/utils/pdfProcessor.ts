@@ -11,9 +11,6 @@ export const processPDFPage = async (
   pageNumber: number
 ): Promise<ProcessedPage> => {
   try {
-    const pdfDoc = await PDFDocument.load(pdfBuffer);
-    const page = pdfDoc.getPage(pageNumber - 1);
-    
     // Load PDF with pdfjs
     const pdf = await pdfjsLib.getDocument({ data: pdfBuffer }).promise;
     const pdfPage = await pdf.getPage(pageNumber);
