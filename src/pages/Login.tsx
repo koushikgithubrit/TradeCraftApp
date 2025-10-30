@@ -1,4 +1,5 @@
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
@@ -6,13 +7,19 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const API_BASE = ((import.meta as any).env?.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
+  const buildApiUrl = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`
+    if (API_BASE.endsWith('/api')) return `${API_BASE}${cleanPath}`
+    return `${API_BASE}/api${cleanPath}`
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
     // First try server auth
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(buildApiUrl('/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

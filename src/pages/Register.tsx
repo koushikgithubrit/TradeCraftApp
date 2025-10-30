@@ -1,4 +1,5 @@
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
@@ -7,13 +8,19 @@ export default function Register() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const API_BASE = ((import.meta as any).env?.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
+  const buildApiUrl = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`
+    if (API_BASE.endsWith('/api')) return `${API_BASE}${cleanPath}`
+    return `${API_BASE}/api${cleanPath}`
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
     setSuccess('')
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch(buildApiUrl('/auth/register'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
