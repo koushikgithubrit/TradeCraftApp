@@ -96,7 +96,7 @@ TradeCraft isn’t just another online course. It’s a full-fledged, interactiv
 
 Download and try the Android app version of TradeCraft:
 
-[![Download APK](https://img.shields.io/badge/Download%20APK-Click%20to%20Install-emerald?style=for-the-badge)](https://github.com/koushikgithubrit/TradeCraftApp/releases/latest/download/TradeCraftApp.apk)
+[![Download APK](https://img.shields.io/badge/Download%20APK-Click%20to%20Install-emerald?style=for-the-badge)](https://github.com/koushikgithubrit/TradeCraftApp/releases/tag/TradeCraftApp.apk)
 
 Notes:
 - The link above points to the latest GitHub Release asset named `TradeCraftApp.apk`.
