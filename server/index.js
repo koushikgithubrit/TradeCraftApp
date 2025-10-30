@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import courseRoutes from './routes/courses.js';
 import contactRoutes from './routes/contact.js';
+import authRoutes from './routes/auth.js';
+import { connectToDatabase } from './mongo.js';
 
 // ES module compatibility
 const __filename = fileURLToPath(import.meta.url);
@@ -27,9 +29,15 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Attempt MongoDB connection (optional). Frontend has fallback local auth.
+connectToDatabase()
+  .then(() => console.log('✅ Successfully connected to MongoDB'))
+  .catch((err) => console.warn('⚠️ MongoDB connection failed, falling back to local auth only:', err?.message || err));
+
 // Routes
 app.use('/api/courses', courseRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/auth', authRoutes);
 
 // Server is running without database - using localStorage on frontend
 

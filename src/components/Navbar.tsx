@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
@@ -13,6 +13,7 @@ const navigation = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(localStorage.getItem('isLoggedIn') === 'true')
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -23,6 +24,23 @@ export default function Navbar() {
 
   const isActive = (path: string) => {
     return location.pathname === path
+  }
+
+  useEffect(() => {
+    const syncAuth = () => setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true')
+    window.addEventListener('storage', syncAuth)
+    window.addEventListener('authChanged', syncAuth as EventListener)
+    return () => {
+      window.removeEventListener('storage', syncAuth)
+      window.removeEventListener('authChanged', syncAuth as EventListener)
+    }
+  }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn')
+    window.dispatchEvent(new Event('authChanged'))
+    setIsOpen(false)
+    navigate('/')
   }
 
   return (
@@ -51,12 +69,37 @@ export default function Navbar() {
                   {item.name}
                 </button>
               ))}
-              <button
-                onClick={() => handleNavigation("/dashboard")}
-                className={`${isActive("/dashboard") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200`}
-              >
-                Dashboard
-              </button>
+              {isLoggedIn ? (
+                <>
+                  <button
+                    onClick={() => handleNavigation("/dashboard")}
+                    className={`${isActive("/dashboard") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200`}
+                  >
+                    Dashboard
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className={`text-gray-300 hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200`}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleNavigation("/login")}
+                    className={`${isActive("/login") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200`}
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => handleNavigation("/register")}
+                    className={`${isActive("/register") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200`}
+                  >
+                    Register
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
@@ -97,12 +140,37 @@ export default function Navbar() {
                   {item.name}
                 </button>
               ))}
-              <button
-                onClick={() => handleNavigation("/dashboard")}
-                className={`${isActive("/dashboard") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
-              >
-                Dashboard
-              </button>
+              {isLoggedIn ? (
+                <>
+                  <button
+                    onClick={() => handleNavigation("/dashboard")}
+                    className={`${isActive("/dashboard") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
+                  >
+                    Dashboard
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className={`text-gray-300 hover:text-emerald-400 block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleNavigation("/login")}
+                    className={`${isActive("/login") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => handleNavigation("/register")}
+                    className={`${isActive("/register") ? "text-emerald-500" : "text-gray-300 hover:text-emerald-400"} block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
+                  >
+                    Register
+                  </button>
+                </>
+              )}
             </div>
           </motion.div>
         )}

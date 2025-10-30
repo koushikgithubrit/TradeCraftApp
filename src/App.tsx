@@ -8,6 +8,8 @@ import Courses from './pages/Courses';
 import TradingCourse from './pages/TradingCourse';
 import ModuleViewer from './components/ModuleViewer';
 import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/trading-course" element={<TradingCourse />} />
             <Route path="/trading-course/:moduleId" element={<TradingCourse />} />
