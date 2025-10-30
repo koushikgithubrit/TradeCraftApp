@@ -88,7 +88,7 @@ TradeCraft isn’t just another online course. It’s a full-fledged, interactiv
 ## 🟢 Live Demo
 > _Add your deployment link below_
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-emerald?style=for-the-badge)](https://your-demo-link.com)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-emerald?style=for-the-badge)](https://tradecraftapp-q9wj.onrender.com/)
 
 ---
 
@@ -234,7 +234,7 @@ A: Use the links in the Community section above.
 - [x] AI-powered trading assistant
 - [x] New modules: Options Trading, Crypto Markets
 - [x] Live webinars and events
-- [ ] Mobile app (iOS & Android)
+- [x] Mobile app (Android APK available in Releases)
 - [ ] Trading competitions & leaderboards
 - [ ] Social trading features
 - [ ] API for algorithmic trading
