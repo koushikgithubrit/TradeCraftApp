@@ -176,12 +176,14 @@ EMAILJS_USER_ID=your_emailjs_user_id
 ## Team
 Meet the people behind TradeCraft:
 
-- **John Smith** — Founder & CEO  
-  _20+ years of experience in financial markets and trading education._
-- **Sarah Johnson** — Head of Education  
-  _Certified financial analyst with a passion for teaching and mentoring._
-- **Michael Chen** — Lead Market Analyst  
+- **Koushik ADak** — Founder & CEO  
+  _Expert in building responsive user interfaces and robust backend systems_
+- **Nikita Maity** — Lead Market Analyst  
+  _Expert in conducting in-depth market and UX research_
+- **Neha Maity** — Technical Support  
   _Expert in technical analysis and market strategy development._
+  - **Sucharita Sahoo** — Testing 
+  _Expert in crafting responsive and user-friendly web interfaces using modern frontend technologies._
 
 ---
 
@@ -226,7 +228,7 @@ A: Use the links in the Community section above.
 - Check the [Issues](https://github.com/your-repo/issues) page for common questions
 - Open a new issue for bugs or feature requests
 - Email us (see Contact section below)
-- Visit our [Knowledge Base](https://help.tradecraft.com)
+- Visit our [Knowledge Base](https://tradecraftapp-q9wj.onrender.com/)
 
 ---
 
@@ -292,9 +294,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 ## 🌐 Social & Contact
-- **Email:** [Add your contact email here]
-- **Website:** [Add your website or deployment link here]
-- **LinkedIn:** [Add your LinkedIn or team profiles here]
+- **Email:** [koushikadakka07@gmail.com]
+- **Website:** [https://tradecraftapp-q9wj.onrender.com/]
+- **LinkedIn:** [https://linkedin.com/in/koushik-adak-187669248]
 - **Twitter:** [Add your Twitter handle here]
 
 ---
