@@ -133,7 +133,8 @@ EMAILJS_USER_ID=your_emailjs_user_id
    ```
 3. **Start the development servers:**
    ```bash
-   npm start
+   TradeCraftApp> npm start
+   TradeCraftApp\server> node index.js
    ```
    - Frontend: http://localhost:5173
    - Backend: http://localhost:5000
