@@ -26,6 +26,7 @@
 
 ## 🚀 Quick Links
 - [Live Demo](#live-demo)
+- [Android APK](#android-apk)
 - [What's New](#whats-new)
 - [Features](#features)
 - [Why TradeCraft?](#why-tradecraft)
@@ -91,6 +92,19 @@ TradeCraft isn’t just another online course. It’s a full-fledged, interactiv
 
 ---
 
+## 📱 Android APK
+
+Download and try the Android app version of TradeCraft:
+
+[![Download APK](https://img.shields.io/badge/Download%20APK-Click%20to%20Install-emerald?style=for-the-badge)](https://github.com/koushikgithubrit/TradeCraftApp/releases/latest/download/TradeCraftApp.apk)
+
+Notes:
+- The link above points to the latest GitHub Release asset named `TradeCraftApp.apk`.
+- If it 404s, upload your APK to GitHub Releases and ensure the asset is named `TradeCraftApp.apk`, or update the link to match your filename.
+- You can also host on Drive and link here if preferred.
+
+---
+
 ## 🎬 Screenshots & Demo
 > _Replace the placeholder below with your own GIF or screenshots!_
 
@@ -124,7 +138,7 @@ EMAILJS_USER_ID=your_emailjs_user_id
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/koushikgithubrit/TradeCraftApp.git
    cd TradeCraft
    ```
 2. **Install dependencies:**
