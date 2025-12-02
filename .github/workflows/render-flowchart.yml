@@ -1,0 +1,46 @@
+name: Render Flowchart
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/architecture-flowchart.mmd'
+      - '.github/workflows/render-flowchart.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install mermaid-cli
+        run: npm i -g @mermaid-js/mermaid-cli
+
+      - name: Render Mermaid to SVG
+        run: |
+          mkdir -p public
+          mmdc -i docs/architecture-flowchart.mmd -o public/architecture-flowchart.svg -b transparent -w 1600 -H 1000
+
+      - name: Commit SVG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/architecture-flowchart.svg
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: render flowchart SVG"
+            git push
+          fi
+
+
+

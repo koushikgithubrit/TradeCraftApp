@@ -1,0 +1,78 @@
+%%{init: {
+  'theme': 'dark',
+  'themeVariables': {
+    'primaryColor': '#10b981',
+    'primaryTextColor': '#0A0F1C',
+    'primaryBorderColor': '#34d399',
+    'lineColor': '#34d399',
+    'tertiaryColor': '#0B1224',
+    'textColor': '#e5e7eb',
+    'noteBkgColor': '#0f172a',
+    'noteTextColor': '#e5e7eb'
+  }
+}}%%
+flowchart LR
+
+  %% Styles
+  classDef page fill:#0f172a,stroke:#334155,stroke-width:1px,color:#e5e7eb,rx:12,ry:12;
+  classDef action fill:#0a362e,stroke:#10b981,stroke-width:1px,color:#d1fae5,rx:12,ry:12;
+  classDef state fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#ecfdf5,rx:12,ry:12;
+  classDef svc fill:#0b1224,stroke:#60a5fa,stroke-width:1px,color:#dbeafe,rx:12,ry:12;
+  classDef db fill:#111827,stroke:#f59e0b,stroke-width:1px,color:#fde68a,rx:12,ry:12;
+  classDef nav fill:#0b1224,stroke:#94a3b8,stroke-width:1px,color:#e5e7eb,rx:12,ry:12;
+
+  %% Client
+  subgraph Client[Client (React + Vite + Tailwind)]
+    direction TB
+    NAV[Navbar\n(Home, Courses, About, Contact)]:::nav
+    NAV -->|isLoggedIn=false| NAV_OUT[Buttons:\nLogin, Register]:::nav
+    NAV -->|isLoggedIn=true| NAV_IN[Buttons:\nDashboard, Logout]:::nav
+
+    HOME[Home Page]:::page
+    COURSES[Courses Page]:::page
+    ABOUT[About Page]:::page
+    CONTACT[Contact Page]:::page
+    DASH[Dashboard Page]:::page
+    TC[Trading Course Pages]:::page
+
+    LOGIN[Login Form\n(API-first, local fallback)]:::action
+    REGISTER[Registration Form\n(API)]:::action
+  end
+
+  %% Flows
+  NAV_OUT --> LOGIN
+  NAV_OUT --> REGISTER
+  LOGIN -->|POST /auth/login| AUTH_LOGIN
+  REGISTER -->|POST /auth/register| AUTH_REGISTER
+
+  AUTH_LOGIN -->|200 OK| SET_AUTH[Set localStorage.isLoggedIn=true\nDispatch authChanged]:::state
+  AUTH_LOGIN -->|Error| LOCAL_FALLBACK[Check hardcoded creds\nEmail: koushikadak@gmail.com\nPassword: 456456]:::state
+  LOCAL_FALLBACK -->|Match| SET_AUTH
+  SET_AUTH --> DASH
+  NAV_IN -->|Click Dashboard| DASH
+  NAV_IN -->|Logout| LOGOUT[Clear isLoggedIn\nDispatch authChanged]:::state
+  LOGOUT --> NAV_OUT
+  DASH -->|Continue Learning| TC
+
+  %% Server
+  subgraph Server[Express API]
+    direction TB
+    AUTH_LOGIN[/POST /api/auth/login/]:::svc
+    AUTH_REGISTER[/POST /api/auth/register/]:::svc
+    CORS[CORS (ALLOWED_ORIGIN)]:::svc
+  end
+  CORS -. applies to .- AUTH_LOGIN
+  CORS -. applies to .- AUTH_REGISTER
+
+  %% Database
+  subgraph Database[MongoDB Atlas]
+    USERS[(Tradecraft DB\nusers collection\nunique email index)]:::db
+  end
+  AUTH_REGISTER --> USERS
+  AUTH_LOGIN --> USERS
+
+  %% Styling Links
+  linkStyle default stroke:#34d399,stroke-width:2px
+
+
+

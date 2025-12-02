@@ -114,6 +114,15 @@ Notes:
 
 ---
 
+## 🧭 System Flowchart
+
+<p align="center">
+  <img src="public/architecture-flowchart.svg" alt="TradeCraft System Flowchart" width="100%"/>
+</p>
+
+Source (Mermaid): `docs/architecture-flowchart.mmd` — auto-rendered to SVG by GitHub Actions.
+
+
 ## Getting Started
 
 ### Prerequisites
