@@ -187,12 +187,6 @@ Meet the people behind TradeCraft:
 
 - **Koushik ADak** — Founder & CEO  
   _Expert in building responsive user interfaces and robust backend systems_
-- **Nikita Maity** — Lead Market Analyst  
-  _Expert in conducting in-depth market and UX research_
-- **Neha Maity** — Technical Support  
-  _Expert in technical analysis and market strategy development._
-  - **Sucharita Sahoo** — Testing 
-  _Expert in crafting responsive and user-friendly web interfaces using modern frontend technologies._
 
 ---
 

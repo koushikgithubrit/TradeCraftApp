@@ -111,24 +111,6 @@ const team = [
     description: '4th year student, expert in building responsive user interfaces and robust backend systems',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3onsErcDiptYJHciaInvsV-FEPLrAlmbX2A&s',
   },
-  {
-    name: 'Nikita Maity',
-    role: 'Frontend & Researcher',
-    description: '4th year student, expert in building responsive user interfaces and conducting in-depth market and UX research',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2Uj50nqZtMF7XB8Xq01HDe5VpvYs4a5okbA&s',
-  },
-  {
-    name: 'Sucharita Sahoo',
-    role: 'Frontend & Testing',
-    description: '4th year student, expert in developing intuitive user interfaces and ensuring application reliability through rigorous testing.',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO-u2mJ4OnFmvdQLd1gdsWr9jK3imQnwHQeg&s',
-  },
-  {
-    name: 'Neha Maiti',
-    role: 'Frontend',
-    description: '4th year student, expert in crafting responsive and user-friendly web interfaces using modern frontend technologies.',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2aJY9d0TscmWyOgVMHXCfEj2PommXW6zC1Eon0EE5nQ&s',
-  },
 ];
 
 const values = [
